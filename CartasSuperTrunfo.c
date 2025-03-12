@@ -75,6 +75,7 @@ int main() {
     printf("Digite o número de pontos turísticos: \n");
     scanf("%d", &numeroDePontosTuristicos2);
 
+
     // Exibição dos Dados das Cartas:
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
@@ -83,11 +84,11 @@ int main() {
     printf ("carta 1: \n");
     
     printf("Estado: %c\n", estado);
-
+    
     printf("Código: %s\n", codigo);
-
+    
     printf("Nome da Cidade: %s\n", nomeDaCidade);
-
+    
     printf("População: %.2f\n", populacao);
 
     printf("Área: %.2f km²\n", area);
@@ -96,28 +97,34 @@ int main() {
 
     printf("Número de Pontos Turísticos: %i\n", numeroDePontosTuristicos);
 
+    float densidadePopulacional = populacao / area;// Operação irá calcular os dois valores e dividir
+    float pibPerCapita = PIB / populacao;//Operação irá dividir pib/população.
+
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional);//irá apresentar o resultado da divisão
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita);//irá apresentar o resultado da divisão de pib/população
+
     //exibindo os dados da carta 2, um por linha.
     printf("Carta 2: \n");
-
+    
     printf("Estado: %c\n", estado2);
-
+    
     printf("Código: %s\n", codigo2);
-
+    
     printf("Nome da Cidade: %s\n", nomeDaCidade2);
-
+    
     printf("População: %.2f\n", populacao2);
-
+    
     printf("Área: %.2f km²\n", area2);
-
+    
     printf("PIB: %.2f bilhões de reais\n", PIB2);
-
+    
     printf("Número de pontos Turísticos: %d\n", numeroDePontosTuristicos2);
  
-    float densidadePopulacional = populacao / area;
-    float pibPerCapita = PIB / populacao;
+    float densidadePopulacional2 = populacao2 / area2; //Operador de divisão
+    float pibPerCapita2 = (float) PIB2 / populacao2; //forçando explicitamente a entrada em float na operação de divisão
 
-    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional);
-    printf("PIB per Capita: %.2f reais\n");
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional2); //Operação para mostrar o resultado
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita2); //Operação para mostrar o resultado da divisão
 
 
     return 0;//retornando o valor zero para informar que foi bem sucedido.
