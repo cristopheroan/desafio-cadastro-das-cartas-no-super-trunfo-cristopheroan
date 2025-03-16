@@ -97,8 +97,8 @@ int main() {
 
     printf("Número de Pontos Turísticos: %i\n", numeroDePontosTuristicos);
 
-    float densidadePopulacional= populacao / area;// Operação irá calcular os dois valores e dividir
-    float pibPerCapita = PIB / populacao;//Operação irá dividir pib/população.
+    float densidadePopulacional= (double) populacao / area;// Operação irá calcular os dois valores e dividir
+    float pibPerCapita = (PIB * 1.0e9) / populacao;//Operação irá dividir pib/população.
     
 
     printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional);//irá apresentar o resultado da divisão
@@ -121,11 +121,34 @@ int main() {
     
     printf("Número de pontos Turísticos: %d\n", numeroDePontosTuristicos2);
  
-    float densidadePopulacional2 = populacao2 / area2; //Operador de divisão
-    float pibPerCapita2 = PIB2 / populacao2; //forçando explicitamente a entrada em float na operação de divisão
+    float densidadePopulacional2 = (double) populacao2 / area2; //Operador de divisão
+    float pibPerCapita2 = (PIB2 * 1.0e9) / populacao2; //operação de divisão
 
     printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional2); //Operação para mostrar o resultado
     printf("PIB per Capita: %.2f reais\n", pibPerCapita2); //Operação para mostrar o resultado da divisão
+
+    //Cálculo Super poder
+    double superPoder1 = populacao + area + (PIB * 1.0e9) + numeroDePontosTuristicos + pibPerCapita + (1.0 / densidadePopulacional);
+    double superPoder2 = populacao2 + area2 + (PIB2 * 1.0e9) + numeroDePontosTuristicos2 + pibPerCapita2 + (1.0 / densidadePopulacional2);
+
+    //Comparação
+    int resultadoPopulacao = populacao > populacao2;
+    int resultadoArea = area > area2;
+    int resultadoPib = PIB > PIB2;
+    int resultadoPontosTuristicos = numeroDePontosTuristicos > numeroDePontosTuristicos2;
+    int resultadoDensidade = densidadePopulacional < densidadePopulacional2; //Menor densidade ganha
+    int resultadoPibPerCapita = pibPerCapita > pibPerCapita2;
+    int resultadoSuperPoder = superPoder1 > superPoder2;
+
+    // Exibição dos Resultados
+        printf("\nComparação de Cartas:\n");
+        printf("População: Carta %d venceu (%d)\n", resultadoPopulacao ? 1 : 2, resultadoPopulacao);
+        printf("Área: Carta %d venceu (%d)\n", resultadoArea ? 1 : 2, resultadoArea);
+        printf("PIB: Carta %d venceu (%d)\n", resultadoPib ? 1 : 2, resultadoPib);
+        printf("Pontos Turísticos: Carta %d venceu (%d)\n", resultadoPontosTuristicos ? 1 : 2, resultadoPontosTuristicos);
+        printf("Densidade Populacional: Carta %d venceu (%d)\n", resultadoDensidade ? 1 : 2, resultadoDensidade);
+        printf("PIB per Capita: Carta %d venceu (%d)\n", resultadoPibPerCapita ? 1 : 2, resultadoPibPerCapita);
+        printf("Super Poder: Carta %d venceu (%d)\n", resultadoSuperPoder ? 1 : 2, resultadoSuperPoder);
 
 
     return 0;//retornando o valor zero para informar que foi bem sucedido.
