@@ -3,8 +3,7 @@
 // Desafio Super Trunfo - Países
 // Tema 1 - Cadastro das Cartas
 // Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-// Siga os comentários para implementar cada parte do desafio.
-//Teste larissa
+//Teste cristopher
 
 int main() {
     // Sugestão: Defina variáveis separadas para cada atributo da cidade.
@@ -17,13 +16,12 @@ int main() {
     //Definindo variaveis para a carta 2  
     char cidade2, estado2, codigo2[20], nomeDaCidade2[100];
     float populacao2, area2, PIB2;
-    int numeroDePontosTuristicos2;   
+    int numeroDePontosTuristicos2; 
+
     // Cadastro das Cartas:
-    // Sugestão: Utilize a função scanf para capturar as entradas do usuário para cada atributo.
+    // Utilizando a função scanf para capturar as informações digitadas
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
-
     printf("Carta 1: \n");
-
 
     printf("Digite o estado: \n");
     scanf("%c", &estado);
@@ -34,7 +32,7 @@ int main() {
     getchar();//Sitema para limpar o buffer de entrada, evitando conflito nas infomações.
 
     printf("Digite o nome da cidade: \n");
-    fgets( nomeDaCidade, sizeof(nomeDaCidade), stdin);//Utilizando o fgets para o sistema ler tambem os espaços, e assim le mais de uma palavra.
+    fgets( nomeDaCidade, sizeof(nomeDaCidade), stdin);//Utilizando o fgets para o sistema ler tambem os espaços, e assim ler mais de uma palavra.
     
     printf("Digite o número da população: \n");
     scanf("%f", &populacao);
@@ -49,7 +47,8 @@ int main() {
     scanf("%d", &numeroDePontosTuristicos);
 
     getchar();//Limpando o buffer de entrada, para novas informações.
-
+    
+    //Capturando as informações da segunda carta.
     printf("Carta 2: \n");
 
     printf("Digite o estado: \n");
@@ -77,10 +76,7 @@ int main() {
 
 
     // Exibição dos Dados das Cartas:
-    // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
-    // Exiba os valores inseridos para cada atributo da cidade, um por linha.
-
-    //exibindo os dados da carta 1, um por linha.
+    // Exibindo os valores inseridos para cada atributo da cidade, um por linha.
     printf ("carta 1: \n");
     
     printf("Estado: %c\n", estado);
@@ -101,8 +97,8 @@ int main() {
     float pibPerCapita = (PIB * 1.0e9) / populacao;//Operação irá dividir pib/população.
     
 
-    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional);//irá apresentar o resultado da divisão
-    printf("PIB per Capita: %.2f reais\n", pibPerCapita);//irá apresentar o resultado da divisão de pib/população
+    printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional);//irá apresentar o resultado da divisão populacao/area.
+    printf("PIB per Capita: %.2f reais\n", pibPerCapita);//irá apresentar o resultado da divisão de pib/população.
 
     //exibindo os dados da carta 2, um por linha.
     printf("Carta 2: \n");
@@ -122,7 +118,7 @@ int main() {
     printf("Número de pontos Turísticos: %d\n", numeroDePontosTuristicos2);
  
     float densidadePopulacional2 = (double) populacao2 / area2; //Operador de divisão
-    float pibPerCapita2 = (PIB2 * 1.0e9) / populacao2; //operação de divisão
+    float pibPerCapita2 = (PIB2 * 1.0e9) / populacao2; //Operador de divisão
 
     printf("Densidade Populacional: %.2f hab/km²\n", densidadePopulacional2); //Operação para mostrar o resultado
     printf("PIB per Capita: %.2f reais\n", pibPerCapita2); //Operação para mostrar o resultado da divisão
@@ -149,6 +145,19 @@ int main() {
         printf("Densidade Populacional: Carta %d venceu (%d)\n", resultadoDensidade ? 1 : 2, resultadoDensidade);
         printf("PIB per Capita: Carta %d venceu (%d)\n", resultadoPibPerCapita ? 1 : 2, resultadoPibPerCapita);
         printf("Super Poder: Carta %d venceu (%d)\n", resultadoSuperPoder ? 1 : 2, resultadoSuperPoder);
+
+    //Comparando as cartas para determinar a vencedora de acordo com o atributo especificado.
+    printf("Comparação de cartas (Atributo: Super Poder)\n");
+
+    printf("Carta 1 - São Paulo (SP): %d\n", superPoder1);
+    printf("Carta 2 - Rio de Janeiro (RJ): %d\n", superPoder2);
+    
+    //Comparando entre um atributo e outro if/else.
+    if (superPoder1 > superPoder2) {
+        printf("Carta 1(São Paulo) Venceu!\n");
+    }else {
+        printf("Carta 2(Rio de Janeiro) Venceu!\n");
+    }
 
 
     return 0;//retornando o valor zero para informar que foi bem sucedido.
