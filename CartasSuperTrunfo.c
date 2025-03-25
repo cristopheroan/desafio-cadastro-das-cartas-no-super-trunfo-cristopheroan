@@ -1,13 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-// Desafio Super Trunfo - Países
-// Tema 1 - Cadastro das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades.
-//Teste cristopher
+/* Desafio Super Trunfo - Países
+ Este código inicial serve como base para o desenvolvimento do sistema de cadastro de cartas de cidades
+ e desenvolvimento da lógica.
+ Teste: Cristopher
+*/
 
 int main() {
-    // Sugestão: Defina variáveis separadas para cada atributo da cidade.
-    // Exemplos de atributos: código da cidade, nome, população, área, PIB, número de pontos turísticos.
    //Definindo variaveis para a carta 1
     char cidade, estado, codigo[20], nomeDaCidade[100];
     float populacao, area, PIB;
@@ -19,12 +20,11 @@ int main() {
     int numeroDePontosTuristicos2; 
 
     // Cadastro das Cartas:
-    // Utilizando a função scanf para capturar as informações digitadas
     // Solicite ao usuário que insira as informações de cada cidade, como o código, nome, população, área, etc.
     printf("Carta 1: \n");
 
     printf("Digite o estado: \n");
-    scanf("%c", &estado);
+    scanf("%c", &estado);// Utilizando a função 'scanf' para capturar as informações digitadas
 
     printf("Digite o código: \n");
     scanf("%s", &codigo);
@@ -60,7 +60,7 @@ int main() {
     getchar();//limpando o buffer para poder ler corretamente a proximaentrada.
 
     printf("Digite o nome da Cidade: \n");
-    fgets(nomeDaCidade2, sizeof(nomeDaCidade2), stdin);
+    fgets(nomeDaCidade2, sizeof(nomeDaCidade2), stdin);//Utilizando o fgets para o sistema ler tambem os espaços, e assim ler mais de uma palavra.
 
     printf("Digite o número da População: \n");
     scanf("%f", &populacao2);
@@ -127,36 +127,72 @@ int main() {
     double superPoder1 = populacao + area + (PIB * 1.0e9) + numeroDePontosTuristicos + pibPerCapita + (1.0 / densidadePopulacional);
     double superPoder2 = populacao2 + area2 + (PIB2 * 1.0e9) + numeroDePontosTuristicos2 + pibPerCapita2 + (1.0 / densidadePopulacional2);
 
-    //Comparação
-    int resultadoPopulacao = populacao > populacao2;
-    int resultadoArea = area > area2;
-    int resultadoPib = PIB > PIB2;
-    int resultadoPontosTuristicos = numeroDePontosTuristicos > numeroDePontosTuristicos2;
-    int resultadoDensidade = densidadePopulacional < densidadePopulacional2; //Menor densidade ganha
-    int resultadoPibPerCapita = pibPerCapita > pibPerCapita2;
-    int resultadoSuperPoder = superPoder1 > superPoder2;
-
-    // Exibição dos Resultados
-        printf("\nComparação de Cartas:\n");
-        printf("População: Carta %d venceu (%d)\n", resultadoPopulacao ? 1 : 2, resultadoPopulacao);
-        printf("Área: Carta %d venceu (%d)\n", resultadoArea ? 1 : 2, resultadoArea);
-        printf("PIB: Carta %d venceu (%d)\n", resultadoPib ? 1 : 2, resultadoPib);
-        printf("Pontos Turísticos: Carta %d venceu (%d)\n", resultadoPontosTuristicos ? 1 : 2, resultadoPontosTuristicos);
-        printf("Densidade Populacional: Carta %d venceu (%d)\n", resultadoDensidade ? 1 : 2, resultadoDensidade);
-        printf("PIB per Capita: Carta %d venceu (%d)\n", resultadoPibPerCapita ? 1 : 2, resultadoPibPerCapita);
-        printf("Super Poder: Carta %d venceu (%d)\n", resultadoSuperPoder ? 1 : 2, resultadoSuperPoder);
-
-    //Comparando as cartas para determinar a vencedora de acordo com o atributo especificado.
-    printf("Comparação de cartas (Atributo: Super Poder)\n");
-
-    printf("Carta 1 - São Paulo (SP): %d\n", superPoder1);
-    printf("Carta 2 - Rio de Janeiro (RJ): %d\n", superPoder2);
+     /*
+     Menu Interativo: Criar um menu interativo no terminal usando a estrutura switch 
+     que permita ao jogador escolher qual atributo será usado para comparar as cartas. 
+     O menu deve ser claro e fácil de usar.
+     */
+    int opcao;
+     //Comparação
+     int resultadoPopulacao = populacao > populacao2;
+     int resultadoArea = area > area2;
+     int resultadoPib = PIB > PIB2;
+     int resultadoPontosTuristicos = numeroDePontosTuristicos > numeroDePontosTuristicos2;
+     int resultadoDensidade = densidadePopulacional < densidadePopulacional2; //Menor densidade ganha
+     int resultadoPibPerCapita = pibPerCapita > pibPerCapita2;
+     int resultadoSuperPoder = superPoder1 > superPoder2;
     
-    //Comparando entre um atributo e outro if/else.
-    if (superPoder1 > superPoder2) {
-        printf("Carta 1(São Paulo) Venceu!\n");
-    }else {
-        printf("Carta 2(Rio de Janeiro) Venceu!\n");
+     //Menu Interativo
+    printf("1. População\n");
+    printf("2. Área\n");
+    printf("3. PIB\n");
+    printf("4. Número de Pontos Turisticos\n");
+    printf("5. Densidade Populacional\n");
+    printf("6. PIB Per Capita\n");
+    printf("7. Super Poder\n");
+    printf("Ecolha qual atributo irá comparar: \n");
+    scanf("%d", &opcao);
+
+    //Ação a ser tomada dependendo da opção que for escolhida
+    switch (opcao)
+    {
+    case 1:
+        printf("População: Carta %d venceu!\n", resultadoPopulacao);
+        break;
+    case 2:
+       printf("Área: Carta %d venceu!\n", resultadoArea);
+       break;
+    case 3:
+       printf("PIB: Carta %d venceu!\n", resultadoPib);
+       break;
+    case 4:
+       printf("Pontos Turísticos: Carta %d venceu!\n", resultadoPontosTuristicos);
+       break;
+    case 5:
+       printf("Densidade Populacional: Carta %d venceu!\n", resultadoDensidade);
+       break;
+    case 6:
+       printf("PIB per Capita: Carta %d venceu!\n", resultadoPibPerCapita);
+       break;
+    case 7:
+       printf("Super Poder: Carta %d venceu!\n", resultadoSuperPoder);
+       break;
+    default:
+       printf("### Opção Invalida! ###\n");
+        break;
+    }
+
+
+    //If/else para poder comparar as cartas e dar o resultado sobre qual carta venceu.
+    if ( populacao > populacao2) {
+        printf("## Parabêns Carta 1 Venceu! ###\n");
+    } else if ((area > area2) || (PIB > PIB2) ||
+               (numeroDePontosTuristicos > numeroDePontosTuristicos2) ||
+               (densidadePopulacional < densidadePopulacional2) ||
+               (pibPerCapita > pibPerCapita2) || (superPoder1 > superPoder2)) {
+        printf("### Parabêns Carta 1 Venceu! ###\n");
+    } else {
+        printf("### Parabêns Carta 2 Venceu! ###\n");
     }
 
 
